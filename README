@@ -1,0 +1,43 @@
+----------------------------- Tema 3 PCOM -----------------------------------------
+Florian Silviu-Gabriel
+323CC
+
+Scopul temei a fost acela de a crea un client capabil sa interactioneze
+cu un server prin requesturi.
+
+Am pornit de la skeletul din laboraotrul 10. Pentru parsarea json-urilor
+am folosit recomandarea din cerinta temei pentru c++, libraria "nlohmann".
+Pentru lucrul cu datele am folosit string si stringStream din c++.
+
+Prima data am creat clientul, pentru asigurarea datelor am folosit 2 functii:
+isNumber - verifica daca un string este numar si daca lungimea lui e 0
+hasSpaces - verifica daca un string are spatii si daca lungimea lui e 0
+
+Pentru asigurarea faptului ca userul este logat si are acces la libarie 
+am folosit variabilele bool:
+-is_logged -> e true daca userul e logat, atunci cand se delogheaza devine
+false
+-has_access -> e true daca userul are acces la biblioteca
+-logout -> verifica daca user-ul s-a delogat, impiedicand delogarea lui
+ulterioara unei comenzi de logout valide
+-token -> un string care retine tokenul 
+-cookie -> string care retine cookie ul de sesiune
+
+Pentru partea de requests am realizat 3 functii
+-POST -> realizeaza un request de tip POST si returneaza un string in 
+functie de raspuns
+-GET -> realizeaza un reqest de tip GET si returneaza un obiect json
+-DELETE -> realizeaza un request de tip DELETE si e folosit pentru 
+stergerea unei carti
+
+Pentru fiecare comanda data clientului se verifica unde este necesar
+daca userul este logat, are acess la biblioteca si ii updateaza
+statusul. Se verifica si datele luate de la tastatura, credentialele
+trebuie sa fie sir de caractere cu lungime mai mare decat 0 si fara 
+spatii, id ul trebuie sa fie un intreg pozitiv iar titlul si celelalte
+informatii legate de carte trebuie sa aiba o lungime mai mare de 0.
+
+In client se verifica datele si statusul userului pe cat se poate, iar
+in requests se realizeaza requesturile si se returneaza mesaje in functie
+de tipul raspunsului unde raspunsul serverlui nu este sigur ca v-a fi unul
+lipsit de erori.
